@@ -1,0 +1,53 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.airline.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <!-- Booking Servlet -->
+<servlet>
+    <servlet-name>BookTicketServlet</servlet-name>
+    <servlet-class>com.airline.BookTicketServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>BookTicketServlet</servlet-name>
+    <url-pattern>/book</url-pattern>
+</servlet-mapping>
+
+
+<!-- View Booking Servlet -->
+<servlet>
+    <servlet-name>ViewBookingServlet</servlet-name>
+    <servlet-class>com.airline.ViewBookingServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ViewBookingServlet</servlet-name>
+    <url-pattern>/view</url-pattern>
+</servlet-mapping>
+
+<!-- Cancel Booking Servlet -->
+<servlet>
+    <servlet-name>CancelBookingServlet</servlet-name>
+    <servlet-class>com.airline.CancelBookingServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CancelBookingServlet</servlet-name>
+    <url-pattern>/cancel</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.airline.RegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+</servlet-mapping>
+
+
+</web-app>
