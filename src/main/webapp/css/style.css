@@ -24,7 +24,8 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+    background: url('../images/bg.png') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -498,3 +499,107 @@ p {
 p a {
     font-weight: 600;
 }
+
+/* Enhancements (Taglines & Descriptions) */
+.header-container {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.header-container .header {
+    margin-bottom: 5px;
+}
+.tagline {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--primary);
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.sub-description {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+/* Offers Banner */
+.offers-banner {
+    background: linear-gradient(135deg, rgba(255, 77, 109, 0.1) 0%, rgba(255, 181, 167, 0.1) 100%);
+    border: 1px dashed var(--primary);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.offer-content {
+    text-align: left;
+    flex: 1;
+}
+.offer-content h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.offer-content p {
+    margin-top: 0;
+    font-size: 14px;
+}
+.offer-btn {
+    padding: 10px 20px;
+    margin-top: 0;
+    font-size: 14px;
+    width: auto;
+}
+
+/* Popular Routes Section */
+.popular-routes-container {
+    margin-top: 40px;
+}
+.popular-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.route-card {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #ffe5ec;
+    border-radius: 16px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.route-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.15);
+    border-color: var(--secondary);
+}
+.route-icon {
+    font-size: 24px;
+    color: var(--primary);
+    margin-right: 20px;
+    background: #fff0f3;
+    padding: 12px;
+    border-radius: 50%;
+}
+.route-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.route-name {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 16px;
+}
+.route-price {
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 5px;
+    font-weight: 500;
+}
+

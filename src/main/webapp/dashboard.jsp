@@ -12,6 +12,7 @@
             <div class="header">
                 FlightEase Dashboard
             </div>
+            <p class="sub-description" style="margin-top: -15px; margin-bottom: 25px;">Manage your bookings, discover new destinations, and take control of your travel experience.</p>
 
             <div class="welcome-msg">
                 Welcome,
@@ -31,6 +32,14 @@
                     <span class="stat-value">8k</span>
                     <span class="stat-label">Miles</span>
                 </div>
+            </div>
+
+            <div class="offers-banner">
+                <div class="offer-content">
+                    <h3><i class="fa-solid fa-gift"></i> Special Summer Offer!</h3>
+                    <p>Chase the Sun! Unlock 20% Off International Escapes Before July 31st.</p>
+                </div>
+                <a href="search.jsp" class="btn btn-accent offer-btn">Book Now</a>
             </div>
 
             <div class="nav-links">

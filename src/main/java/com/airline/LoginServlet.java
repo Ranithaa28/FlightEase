@@ -11,8 +11,8 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://" + (System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost") + ":3306/airline_db?useSSL=false&allowPublicKeyRetrieval=true", "root", "root123");
+            Class.forName(Config.getDriverClass());
+            Connection conn = DriverManager.getConnection(Config.getConnectionUrl(), Config.getDbUser(), Config.getDbPassword());
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");
             ps.setString(1, email);
             ps.setString(2, password);

@@ -10,8 +10,8 @@ public class CancelBookingServlet extends HttpServlet {
         String bookingId = req.getParameter("id");
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://" + (System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost") + ":3306/airline_db?useSSL=false&allowPublicKeyRetrieval=true", "root", "root123");
+            Class.forName(Config.getDriverClass());
+            Connection conn = DriverManager.getConnection(Config.getConnectionUrl(), Config.getDbUser(), Config.getDbPassword());
             PreparedStatement ps = conn.prepareStatement("DELETE FROM bookings WHERE id = ?");
             ps.setString(1, bookingId);
             ps.executeUpdate();

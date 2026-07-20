@@ -2,6 +2,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+    <listener>
+        <listener-class>com.airline.DatabaseInitListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.airline.LoginServlet</servlet-class>
@@ -10,7 +14,17 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    <!-- Booking Servlet -->
+<!-- Search Flight Servlet -->
+<servlet>
+    <servlet-name>SearchFlightServlet</servlet-name>
+    <servlet-class>com.airline.SearchFlightServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>SearchFlightServlet</servlet-name>
+    <url-pattern>/search</url-pattern>
+</servlet-mapping>
+
+<!-- Booking Servlet -->
 <servlet>
     <servlet-name>BookTicketServlet</servlet-name>
     <servlet-class>com.airline.BookTicketServlet</servlet-class>

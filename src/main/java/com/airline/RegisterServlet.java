@@ -13,9 +13,8 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://" + (System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost") + ":3306/airline_db?useSSL=false&allowPublicKeyRetrieval=true", "root", "root123");
+            Class.forName(Config.getDriverClass());
+            Connection conn = DriverManager.getConnection(Config.getConnectionUrl(), Config.getDbUser(), Config.getDbPassword());
 
             PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO users (email, password) VALUES (?, ?)");
@@ -28,6 +27,13 @@ public class RegisterServlet extends HttpServlet {
             // ✅ Redirect to login page after successful registration:
             response.sendRedirect("index.jsp");
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            if (e.getMessage() != null && e.getMessage().toLowerCase().contains("unique")) {
+                response.sendRedirect("register.jsp?error=email_exists");
+            } else {
+                response.getWriter().println("Database Error: " + e.getMessage());
+            }
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().println("Error: " + e.getMessage());

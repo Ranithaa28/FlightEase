@@ -8,6 +8,9 @@
 <body>
     <div class="login-box">
         <h2>Signup Form</h2>
+        <% if ("email_exists".equals(request.getParameter("error"))) { %>
+            <p style="color: #e74c3c; font-weight: bold; text-align: center; margin-bottom: 15px;"><i class="fa-solid fa-triangle-exclamation"></i> Email is already registered.</p>
+        <% } %>
         <form action="register" method="post">
             <div class="input-box">
                 <i class="fa-solid fa-envelope"></i>

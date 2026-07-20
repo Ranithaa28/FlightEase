@@ -10,20 +10,43 @@ public class BookTicketServlet extends HttpServlet {
         throws ServletException, IOException {
 
         String name = request.getParameter("name");
-        String source = request.getParameter("source");
-        String destination = request.getParameter("destination");
+        String flightIdStr = request.getParameter("flight_id");
+        int flightId = 0;
+        if (flightIdStr != null && !flightIdStr.isEmpty()) {
+            flightId = Integer.parseInt(flightIdStr);
+        }
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://" + (System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost") + ":3306/airline_db?useSSL=false&allowPublicKeyRetrieval=true", "root", "root123");
+            Class.forName(Config.getDriverClass());
+            Connection conn = DriverManager.getConnection(Config.getConnectionUrl(), Config.getDbUser(), Config.getDbPassword());
 
             PreparedStatement ps = conn.prepareStatement(
-                "INSERT INTO bookings (name, source, destination) VALUES (?, ?, ?)");
+                "INSERT INTO bookings (name, flight_id) VALUES (?, ?)");
             ps.setString(1, name);
-            ps.setString(2, source);
-            ps.setString(3, destination);
+            ps.setInt(2, flightId);
             ps.executeUpdate();
+            
+            // Fetch flight details for email
+            PreparedStatement flightPs = conn.prepareStatement("SELECT * FROM flights WHERE id = ?");
+            flightPs.setInt(1, flightId);
+            ResultSet rs = flightPs.executeQuery();
+            if (rs.next()) {
+                String airline = rs.getString("airline");
+                String flightNumber = rs.getString("flight_number");
+                String source = rs.getString("source");
+                String destination = rs.getString("destination");
+                String departureTime = rs.getString("departure_time");
+                String price = String.valueOf(rs.getDouble("price"));
+                
+                HttpSession session = request.getSession(false);
+                String userEmail = (session != null) ? (String) session.getAttribute("email") : null;
+                
+                if (userEmail != null) {
+                    EmailService.sendBookingConfirmation(userEmail, name, airline, flightNumber, source, destination, departureTime, price);
+                }
+            }
+            rs.close();
+            flightPs.close();
 
             conn.close();
 

@@ -47,8 +47,10 @@
                 <a href="view.jsp"><i class="fa-solid fa-arrow-left"></i> No, Go Back</a>
             </div>
         <% } else { %>
-            <h2>Cancel Ticket</h2>
-            <p>Please enter the ID of the booking you want to cancel.</p>
+            <div class="header-container">
+                <div class="header">Cancel Ticket</div>
+                <p class="sub-description" style="margin-top: -15px; margin-bottom: 25px;">Plans changed? No worries. Enter your Ticket ID to cancel your booking.</p>
+            </div>
             <form action="cancel.jsp" method="get">
                 <div class="input-box">
                     <i class="fa-solid fa-hashtag"></i>
