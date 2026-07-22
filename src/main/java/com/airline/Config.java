@@ -2,18 +2,18 @@ package com.airline;
 
 public class Config {
     public static String getConnectionUrl() {
-        return "jdbc:h2:mem:airline_db;DB_CLOSE_DELAY=-1;MODE=MySQL";
+        return "jdbc:mysql://localhost:3306/airline_db";
     }
 
     public static String getDbUser() {
-        return "sa";
+        return "root";
     }
 
     public static String getDbPassword() {
-        return "";
+        return "root123";
     }
     
     public static String getDriverClass() {
-        return "org.h2.Driver";
+        return "com.mysql.cj.jdbc.Driver";
     }
 }

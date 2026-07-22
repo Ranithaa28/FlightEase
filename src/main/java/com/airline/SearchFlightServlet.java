@@ -34,9 +34,9 @@ public class SearchFlightServlet extends HttpServlet {
             Connection conn = DriverManager.getConnection(Config.getConnectionUrl(), Config.getDbUser(), Config.getDbPassword());
 
             PreparedStatement ps = conn.prepareStatement(
-                "SELECT * FROM flights WHERE source = ? AND destination = ?");
-            ps.setString(1, from);
-            ps.setString(2, to);
+                "SELECT * FROM flights WHERE LOWER(source) = LOWER(?) AND LOWER(destination) = LOWER(?)");
+            ps.setString(1, from.trim());
+            ps.setString(2, to.trim());
 
             ResultSet rs = ps.executeQuery();
 

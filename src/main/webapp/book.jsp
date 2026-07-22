@@ -31,6 +31,17 @@
                  Price: $<%= price %>
              </span>
          </div>
+         
+         <div class="map-container" style="margin-bottom: 25px;">
+             <iframe 
+                 width="100%" 
+                 height="250" 
+                 frameborder="0" 
+                 style="border:0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"
+                 src="https://maps.google.com/maps?saddr=<%= java.net.URLEncoder.encode(source, "UTF-8") %>&daddr=<%= java.net.URLEncoder.encode(destination, "UTF-8") %>&output=embed"
+                 allowfullscreen>
+             </iframe>
+         </div>
          <% } %>
          
         <form action="book" method="post">

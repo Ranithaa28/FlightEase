@@ -40,6 +40,18 @@
             <div class="header" style="font-size: 24px; margin-top: 40px; margin-bottom: 20px;">
                 Flights from <strong><%= from %></strong> to <strong><%= to %></strong>
             </div>
+
+            <div class="map-container" style="margin-bottom: 30px;">
+                <iframe 
+                    width="100%" 
+                    height="350" 
+                    frameborder="0" 
+                    style="border:0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+                    src="https://maps.google.com/maps?saddr=<%= java.net.URLEncoder.encode(from, "UTF-8") %>&daddr=<%= java.net.URLEncoder.encode(to, "UTF-8") %>&output=embed"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
             <% if (flights != null && !flights.isEmpty()) { %>
             <div class="table-container">
                 <table>
