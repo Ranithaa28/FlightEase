@@ -56,3 +56,26 @@ Navigate to the following URL in your web browser:
     *   Email: `admin@example.com`
     *   Password: `admin`
 *   **Database Integrity:** The database uses `ON DELETE CASCADE` for bookings linked to flights. Removing a flight will automatically clear all associated user bookings.
+
+---
+
+## 🛠️ Troubleshooting
+
+**Error: "Address already in use" OR "Failed to delete target folder"**
+If you try to run the application or build it and get an error saying the port is in use, or Maven cannot clean the `target` directory, it means another instance of the server is still running in the background. 
+
+You can forcefully stop the existing Java process by running one of the following commands in your terminal:
+
+*   **Windows (Command Prompt):**
+    ```cmd
+    taskkill /F /IM java.exe
+    ```
+*   **Windows (PowerShell):**
+    ```powershell
+    Stop-Process -Name java -Force
+    ```
+*   **Mac / Linux:**
+    ```bash
+    pkill java
+    ```
+After running the command, try your Maven command again!
