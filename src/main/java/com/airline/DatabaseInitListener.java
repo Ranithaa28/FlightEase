@@ -13,3 +13,4 @@ public class DatabaseInitListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
     }
 }
+
